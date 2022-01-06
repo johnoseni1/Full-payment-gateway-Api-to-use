@@ -1,10 +1,4 @@
-# Payment Gateway
 
-E-Commerce is experiencing exponential growth and merchants who sell their goods or services online need a way to easily collect money from their customers.
-The payment gateway will need to provide merchants with a way to process a payment. To do this, the merchant should be able to submit a request 
-to the payment gateway. A payment request should include appropriate fields such as the card number, expiry month/date, amount, currency, and cvv.
-
-![payment gateway](Documents/payment-gateway.png)
 
 ### Development Scope
 
