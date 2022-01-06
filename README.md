@@ -74,44 +74,8 @@ Note that the card number has been masked for security.
 - Presentation and Infrastructure depend only on Application
 - Infrastructure and Presentation components can be replaced with minimal effort
 
-# Application layer and  CQRS
-Application layer is for use case scenarios to be implemented. The CQRS structure in [Figure 2] shows clear messages of the application purpose. 
 
-[Figure 2] - CQRS Folder Structure
-
-![CQRS structure](Documents/cqrs.png)
-
-Having interfaces declared in Application conforms to the inversion of control. It makes it easy to replace external resource (dependency). [Figure 3] shows an example of creating a payment. 
-
-[Figure 3]
-
-![dependency flow](Documents/create-payment.png)
-
-Handler acquires a bank client through a bank client factory to send a payment request to a bank. If it is successful, it saves the payment details using the application-db-context.
-Note that Handler works with interfaces. 
-
-Looking at arrows indicating the use of interfaces, nothing in Application knows anything about something in an outside world except Domain.
-
-# Solution Architecture
-
-[Figure 4]
-
-![dependency flow](Documents/solution-architecture.png)
-
-| Project        | Description           | Project Dependencies |
-| ------------- |-------------|-------------|
-| ApiClient     | A test tool to demonstrate how to get a bearer token form IdentityServer and use it to call API | - |
-| Api     | Payment gateway API      | Application, Bank, Common, Infrastructure, Persistence |
-| Infrastructure | Contains MachineDateTime implementation of IDateTime from Common project. Contains API client, file system, email/sms, system clock    | Application, Common |
-| Bank | Collection of bank clients. Bank simulator mocks a bank for the sake of test | Application |
-| DbMigration | Control database schema explicitly usnig FluentMigrator / Run by a build script | - |
-| IdentityServer | Issue a bearer token to secure API | - |
-| Persistence | Operate CRUD on database. Contains DbContext, configurations, seeding | Application |
-| Application | Contain interfaces, models, logic, commands / queries, validators, exceptions | Common, Domain |
-| Domain | Contain entity, value object, enum, exception, logic | Common |
-| Common | Cross cutting concerns like date time service, logging, etc | - |
-
-# What makes a good application
+pplication
 
 ### Application logging
 Serilog is a choice of logging here. For the test purpose it logs in a file but adding another sink for test and production
