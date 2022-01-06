@@ -65,17 +65,7 @@ Finally, we can see the list of payment. Provide the merchant number that was us
 
 Note that the card number has been masked for security.
 
-# Dependency rules in the architecture
-The model of the solution is based on Clean Architecture and CQRS. 
-The concentric circles in [Figure 1] represent different areas of software. The inner circles are policies; the outer circles are mechanism. The further in you go, the higher level the software becomes, in general.
 
-[Figure 1]
-
-![dependency flow](Documents/dependency-flow.png)
-
-*Source code dependencies must point only inward, toward higher-level policies.*
-
-By separating the software into layers and conforming to the dependency rules, a system becomes intrinsically testable.
 
 
 - Domain contains entities, value objects, enterprise-wide logic and exceptions
